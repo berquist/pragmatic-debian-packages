@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-VERSION = 10.15.3
+VERSION = 22.12.0
 DISTRIBUTION = $(shell sed -n "s/^VERSION_CODENAME=//p" /etc/os-release)
 PACKAGEVERSION = $(VERSION)-0~$(DISTRIBUTION)0
 TARBALL = node-v$(VERSION).tar.gz

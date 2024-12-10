@@ -1,21 +1,28 @@
 FROM debian:bookworm-20241202
 
 # hadolint ignore=DL3008
-RUN apt-get update -y \
+RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
+    --mount=target=/var/cache/apt,type=cache,sharing=locked \
+    rm -f /etc/apt/apt.conf.d/docker-clean \
+    && apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     build-essential \
+    curl \
     debhelper \
     devscripts \
     dh-make \
     dh-python \
     dh-virtualenv \
     fakeroot \
+    git \
     golang \
+    leiningen \
     libevent-dev \
     lintian \
     nodejs \
     npm \
+    pkg-config \
     python3-all \
     python3-setuptools \
     quilt \
